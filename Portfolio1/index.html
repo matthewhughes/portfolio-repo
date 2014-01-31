@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+	function validate(){
+		var datereg = document.getElementById('frmDateReg').value;
+		var age = document.getElementById('frmAge').value;
+		var dob = document.getElementById('frmDateOfBirth').value;
+		var dob = new Date(dob);
+		console.log(datereg);
+		var date = new Date();
+		if(age < 12){
+			alert('Too young.');
+		} else if (age > 150) (
+			alert('Too old.');
+		)
+		if(date.toDateString().toLocaleString() != datereg.toDateString().toLocaleString()){
+			console.log(date);
+			console.log(datereg);
+			alert("Date Registered cannot be before today!");
+		}
+		dob1 = date.getFullYear() - age;
+		if(dob1.toDateString().toLocaleString() != dob.toDateString().toLocaleString()){
+			console.log(dob1, dob);
+			alert("Age must match date of birth");
+		}
+		return false;
+	}
+
+	function back(){
+		alert('Are you sure?');
+		window.history.back()
+		return false;
+	}
+
+	function clearForm(){
+		alert('Are you sure?');
+		document.getElementById("frmRegister").reset();
+		return false;
+	}
+	</script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<section>
+		<form onsubmit="return validate();" id='frmRegister' >
+			Forename: <input type="text" pattern="[a-zA-Z\s]{2,}" id="frmForename" required placeholder="Forename">
+			Surname: <input type="text" pattern="[a-zA-Z\s]{2,}" id="frmSurname" required placeholder="Surname">
+			Gender: <select name="Gender" id="frmGender">
+				<option value="M">M</option>
+				<option value="F">F</option>
+			</select>
+			Date Of Birth <input type="date" required id="frmDateOfBirth">
+			Age: <input type="text" id="frmAge" required pattern=".{1,2}">
+			Course: <select name="Course" id="frmCourse">
+				<option value="Databases">Databases</option>
+				<option value="Websites">Websites</option>
+				<option value="Networks">Networks</option>
+			</select>
+			Date Registered: <input type="date" required id="frmDateReg">
+			<input type="submit" value="Submit">
+			<button onclick="back()">Back</button>
+			<button onclick="clearForm()">Clear Form</button>
+		</form>
+	</section>
+</body>
+</html>
